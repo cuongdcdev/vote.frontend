@@ -140,6 +140,8 @@ export default function Index() {
         from: address,
         value: Number(amountDeposit) * 10 ** 18,
       });
+      await handleGetBalance();
+      
     } catch (error) {
       setErrorMessage(error.message);
     }
