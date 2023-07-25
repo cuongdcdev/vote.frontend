@@ -150,7 +150,7 @@ export default function Index() {
   };
 
   const handleSumbitProposal = async () => {
-    if( description.trim().length == 0  ){
+    if( !description || description.trim().length == 0  ){
       VToast(  "Proposal can not be empty!", "is-danger" );
       return;
     }
