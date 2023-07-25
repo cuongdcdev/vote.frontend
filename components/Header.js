@@ -2,10 +2,10 @@ import Link from "next/link";
 import Image from "next/image";
 import Head from "next/head";
 import Index from "../pages";
-export default function Header({handleConnectWallet, changePageCreateProposal, changePageDeposit, address}) {
-    
-    function stripWalletAddr( str){
-        return str.substr(0,3) + "..." + str.substr(-3,3); 
+export default function Header({ handleConnectWallet, changePageCreateProposal, changePageDeposit, address }) {
+
+    function stripWalletAddr(str) {
+        return str.substr(0, 3) + "..." + str.substr(-3, 3);
     }
 
     return (
@@ -19,10 +19,10 @@ export default function Header({handleConnectWallet, changePageCreateProposal, c
             <header>
                 <nav className="navbar is-dark" role="navigation" aria-label="main navigation">
                     <div className="navbar-brand navbar-start">
-                        <a className="navbar-item" href="/">
+                        <Link className="navbar-item" href="/">
                             <Image src="/icon.png" width="112" height="112" style={{ height: "auto", width: "auto", marginRight: "10px" }} />
                             KlayVote
-                        </a>
+                        </Link>
                     </div>
 
                     <div id="navbarBasicExample" className="">
@@ -31,7 +31,7 @@ export default function Header({handleConnectWallet, changePageCreateProposal, c
 
                                 <div className="buttons">
 
-                                    <Link id="menuCreateProposal"  href="/" className="button is-info" onClick={changePageCreateProposal}>
+                                    <Link id="menuCreateProposal" href="/" className="button is-info" onClick={changePageCreateProposal}>
                                         ➕ Create Proposal
                                     </Link>
 
@@ -39,14 +39,15 @@ export default function Header({handleConnectWallet, changePageCreateProposal, c
                                         💲 Deposit
                                     </Link>
 
-                                    { address ?
-                                    <a id="connectWallet" className="button is-light">
-                                        🦊 Hi { stripWalletAddr(address)}
-                                    </a> :
-                                     <a id="connectWallet" className="button is-light" onClick={handleConnectWallet}>
-                                         🦊 Connect Wallet
-                                    </a>  }
-                                    
+                                    {address ?
+                                        <Link id="connectWallet" href="#" className="button is-light">
+                                            🦊 Hi {stripWalletAddr(address)}
+                                        </Link> :
+
+                                        <Link id="connectWallet" href="#" className="button is-light" onClick={handleConnectWallet}>
+                                            🦊 Connect Wallet
+                                        </Link>}
+
                                 </div>
                             </div>
                         </div>

@@ -5,6 +5,7 @@ export const VToast = (msg, type)=>{
       message: msg,
       type: !type ? "is-success" : type,
       position: "bottom-right",
-      dismissible: true 
+      dismissible: true,
+      pauseOnHover: true,
     } );
 }

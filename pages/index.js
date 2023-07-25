@@ -56,7 +56,7 @@ export default function Index() {
         console.log("user logged in ! " , web3);
       } catch (error) {
         console.log(error);
-        VToast("Error: " + error.toString(), "is-danger");
+        // VToast("Error: " + error.toString(), "is-danger");
       }
     } else {
       VToast("Not install Metamask! Please install wallet: https://metamask.io", "is-danger");
@@ -141,13 +141,20 @@ export default function Index() {
         value: Number(amountDeposit) * 10 ** 18,
       });
       await handleGetBalance();
+      VToast("Deposit successfully! ");
       
     } catch (error) {
       setErrorMessage(error.message);
+      VToast("Something wrong: " + error.message , "is-danger");
     }
   };
 
   const handleSumbitProposal = async () => {
+    if( description.trim().length == 0  ){
+      VToast(  "Proposal can not be empty!", "is-danger" );
+      return;
+    }
+
     try {
       const allowance = await tokenContract.methods
         .allowance(address, votingContract._address)
@@ -177,6 +184,7 @@ export default function Index() {
 
   const changePageDeposit = () => {
     setCurrentPage("deposit");
+    handleGetBalance();
   }
 
   return (
@@ -209,7 +217,7 @@ export default function Index() {
                   Submit proposal
                 </button>
 
-                <button className="button is-secondary mt-2"
+                <button className="ml-3 button is-secondary mt-2"
                   onClick={handleGetAllProposals}
                 >
                   Get all proposals
