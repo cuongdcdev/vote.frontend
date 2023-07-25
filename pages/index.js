@@ -263,7 +263,7 @@ export default function Index() {
 
         {/* start deposit  */}
         <main className={currentPage != 'deposit' ? 'is-hide' : ''}>
-          <section className="section-deposit">
+          <section className="section-deposit mt-5">
             <div className="container">
               <div className=" field">
                 <h2 className="title">Deposit</h2>
