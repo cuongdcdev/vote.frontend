@@ -254,9 +254,7 @@ export default function Index() {
           </section>
 
           <section>
-            <div className=" container has-text-danger">
-              <p>{VToast(errorMessage , "is-danger")}</p>
-            </div>
+              <p>{errorMessage && VToast(errorMessage , "is-danger")}</p>
           </section>
         </main>
         {/* end default home page  */}
